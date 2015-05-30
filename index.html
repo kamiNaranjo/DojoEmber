@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dojo Ember</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<!--Vista de inicio-->
+  <script type="text/x-handlebars">
+    <h1>Dojito ember :3</h1>
+     <!--Menu de la página-->
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li role="presentacion" class="dropdown">
+          <a href="#">Inicio</a>
+        </li>
+        <li role="presentacion" class="dropdown">
+          {{#link-to 'create'}} Crear {{/link-to}}
+        </li>
+      </ul>
+      <div class="panel panel-primary">
+        {{outlet}}
+      </div>
+    </div>
+  </script>
+
+<!--Vista para crear usuarios-->
+  <script type="text/x-handlebars" id="create">
+    <div class="panel-heading">
+      <!--Variable para no quemar el titulo en el html-->
+      {{title}}
+    </div>
+    <div class="panel-body"></div>
+      <!--dividiendo formulario en tres columnas -->
+      <div class="row">
+          <div class="col-lg-4"></div>
+          <!--Columna con el formulario-->
+          <div class="col-lg-4">
+            <!--La accion corresponde a un metodo que se encoentrara en el controlador-->
+            <form {{action "create" on="submit"}}>
+              {{input value=model.name class="form-control" required="true" placeholder="Nombre"}}
+              <br>
+              {{input value=model.username class="form-control" required="true" placeholder="Usuario"}}
+              <br>
+              {{input value=model.password class="form-control" required="true" placeholder="Contraseña" type="password"}}
+              <br>
+              {{input class="form-control" type="submit" value="Crear Usuario"}}   
+            </form>
+          </div>
+        <div class="col-lg-4"></div>
+    </div>
+  </script>
+
+  <script src="js/libs/jquery.js"></script>
+  <script src="js/libs/ember-handlebars.js"></script>
+  <script src="js/libs/ember.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
